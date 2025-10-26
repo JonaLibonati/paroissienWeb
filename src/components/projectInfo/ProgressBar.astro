@@ -1,0 +1,68 @@
+---
+const { percentage } = Astro.props;
+---
+
+<div>
+  <div
+    id="wrapper"
+    class=`relative border-1 border-stone-700 bg-stone-600 w-[116px] lg:w-[150px] `
+  >
+    <div
+      id="bar"
+      class=`relative bg-white w-full bottom-0`
+    >
+    <p class="relative text-white text-xl lg:text-2xl font-thin p-3 lg:p-4 mix-blend-difference">
+      <span class="font-poppins text-3xl lg:text-4xl">{percentage * 100}%</span
+      >
+      de avance
+    </p>
+  </div>
+</div>
+
+<script define:vars={{ percentage }}>
+
+  const wrapper = document.getElementById("wrapper");
+  const bar = document.getElementById("bar");
+
+  const limitLarge = 1024;
+  const limitMedium = 768;
+
+  const isLarge = () => {
+    if (window.innerWidth >= limitLarge) {
+      return true
+    }
+    return false
+  }
+
+  const isMedium = () => {
+    if (window.innerWidth >= limitMedium  && window.innerWidth < limitLarge) {
+      return true
+    }
+    return false
+  }
+
+  /* const isSmall = () => {
+    if (window.innerWidth <= limitMedium) {
+      return true
+    }
+
+    return false
+  } */
+
+  const getHeight = () => {
+    if (isMedium()) return 329
+    if (isLarge()) return 505
+    return 320
+  }
+
+  const setBarHeight = () => {
+    const height = getHeight();
+    wrapper.style.height = height + 'px';
+    console.log(percentage)
+    bar.style.height = Math.round(height * (1 - percentage)) + 'px';
+  }
+
+  window.addEventListener('resize', setBarHeight);
+  setBarHeight();
+
+</script>

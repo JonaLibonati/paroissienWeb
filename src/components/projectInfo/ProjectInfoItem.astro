@@ -1,0 +1,22 @@
+---
+const { value, text } = Astro.props;
+---
+
+<li>
+  <p class="flex gap-2 w-min items-center">
+    <span
+      class="stroke leading-none text-white font-black text-5xl lg:text-6xl font-poppins text-right min-w-[52px] lg:min-w-[64px]"
+      >{value}</span
+    >
+    <span class="text-lg lg:text-2xl font-thin pb-1"><slot name="text">{text}</slot></span>
+  </p>
+</li>
+
+<style>
+  .stroke {
+    -webkit-text-stroke-width: 2px;
+    /* Sets the stroke width */
+    -webkit-text-stroke-color: var(--color-stone-700);
+    /* Sets the stroke color */
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+const { title, img, alt } = Astro.props;
+---
+
+<ul class="w-[200px] lg:w-[300px]">
+  <h2 class="vhn">{title}</h2>
+  <div class="w-fit m-auto h-full grid grid-rows-[1fr_min-content]">
+    <figure class="flex justify-center pb-2 lg:pb-4">
+      <img
+        class="self-end justify-self-center object-contain max-h-[54px] xl:max-h-[150px]"
+        src={img.src}
+        alt={alt}
+      />
+    </figure>
+  </div>
+</ul>
+
+<!-- h-[54px] lg:h-[80px] -->

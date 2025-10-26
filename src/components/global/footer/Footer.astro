@@ -1,0 +1,32 @@
+---
+import footerLogo from "../../../assets/footer_logo.png";
+import Column from "../../../layouts/Column.astro";
+import {contactData} from "../../../data/contactData.js";
+
+const {rawMovil, movil} = contactData.telefonos;
+const {direccion: email} = contactData.correo;
+const {url} = contactData.sitioWeb;
+---
+
+<footer class="bg-stone-200 py-20">
+  <Column>
+    <div class="grid md:grid-cols-[200px_1fr] gap-8">
+      <figure>
+        <img
+          class="w-[200px] object-contain"
+          src={footerLogo.src}
+          alt="Logo del nombre del proyecto inmobiliario Paroissien 4646"
+        />
+      </figure>
+      <div>
+        <address class="grid grid-cols-1 gap-3 not-italic font-thin text-xl md:text-2xl">
+          <h2 class="uppercase">Paroissien <span class="font-poppins">4646</span>, Saavedra, CABA.</h2>
+          <h3 class="uppercase">Tu inversión. Tu futuro.</h3>
+          <a class="hover:underline decoration-from-font" href=`mailto:${email}`>{email}</a>
+          <a class="font-poppins hover:underline decoration-from-font" href={`tel:+${rawMovil}`}>{movil}</a>
+          <a href={`https://${url}`}>www.paroissien<span class="font-poppins">4646</span>.com</a>
+        </address>
+      </div>
+    </div>
+  </Column>
+</footer>
