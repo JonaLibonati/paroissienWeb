@@ -2,7 +2,7 @@
 const { percentage } = Astro.props;
 ---
 
-<div>
+<div aria-label="Barra de progreso del desarrollo inmobiliario Paroissien 4646">
   <div
     id="wrapper"
     class=`relative border-1 border-stone-700 bg-stone-600 w-[116px] lg:w-[150px] `
@@ -40,14 +40,6 @@ const { percentage } = Astro.props;
     }
     return false
   }
-
-  /* const isSmall = () => {
-    if (window.innerWidth <= limitMedium) {
-      return true
-    }
-
-    return false
-  } */
 
   const getHeight = () => {
     if (isMedium()) return 329

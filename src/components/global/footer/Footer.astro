@@ -2,15 +2,22 @@
 import footerLogo from "../../../assets/footer_logo.png";
 import Column from "../../../layouts/Column.astro";
 import {contactData} from "../../../data/contactData.js";
+import LegalItem from "./LegalItem.astro";
+import Author from "./Author.astro";
 
 const {rawMovil, movil} = contactData.telefonos;
 const {direccion: email} = contactData.correo;
 const {url} = contactData.sitioWeb;
 ---
 
-<footer class="bg-stone-200 py-20">
+<footer class="bg-stone-200 pt-10 pb-10">
   <Column>
-    <div class="grid md:grid-cols-[200px_1fr] gap-8">
+    <ul class="flex flex-wrap gap-2 pb-5 mb-10 border-b border-stone-300" aria-label="Términos y condiciones">
+      <LegalItem text="Imágenes y renders son meramente ejemplificativos y no contractuales. La selección de las terminaciones y/o marcas será discrecional de la Empresa." />
+      <LegalItem text="El mobiliario exhibido es ilustrativo y no se encuentra incluido en la oferta que se realiza del producto inmobiliario." />
+      <LegalItem text="La distribución de los espacios y/o dimensiones, así como los detalles de terminación, aberturas y fachadas podrán variar de acuerdo con necesidades de orden técnico que se presenten durante la construcción o aprobación de las distintas etapas que conforman el emprendimiento y/o disponibilidad de materiales e insumos en el mercado local." />
+    </ul>
+    <div class="grid md:grid-cols-[200px_1fr] gap-8 pb-10 mb-5 border-b border-stone-300">
       <figure>
         <img
           class="w-[200px] object-contain"
@@ -28,5 +35,6 @@ const {url} = contactData.sitioWeb;
         </address>
       </div>
     </div>
+    <Author />
   </Column>
 </footer>
