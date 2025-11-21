@@ -1,0 +1,68 @@
+---
+import ProjectUnit from "./ProjectUnit.astro";
+import duplex from "../../assets/renders/dos_ambientes.jpg";
+import ProjectUnitFloor from "./ProjectUnitFloor.astro";
+import plantaDuplex3A from "../../assets/plantas/duplex_3A.jpg";
+import plantaDuplex3B from "../../assets/plantas/duplex_3B.jpg";
+import plantaDuplex3C from "../../assets/plantas/duplex_3C.jpg";
+import plantaDuplex3D from "../../assets/plantas/duplex_3D.jpg";
+
+const image = {
+  image: duplex,
+  alt: "Imagen del interior del departamento tres ambientes del proyecto Paroissien 4646"
+}
+
+---
+
+<ProjectUnit
+  id="duplexs"
+  title="Duplex"
+  subtitle="Modernos y distintivos, con un espacio en doble altura que aporta carácter, amplitud y una fuerte identidad arquitectónica. El diseño en dúplex permite maximizar la iluminación y la ventilación natural, generando ambientes confortables y bien integrados. Unidades contemporáneas, funcionales y llenas de luz, ideales para quienes buscan una vivienda moderna con impronta única."
+  images={[image]}
+  imagePosition="object-[80%_0]"
+>
+  <ProjectUnitFloor
+    isUnidades={false}
+    unit="3A"
+    supCub="52,15"
+    supSemi="7,85"
+    supTotal="60,00"
+    planta={plantaDuplex3A}
+    plataMobile={plantaDuplex3A}
+    plantaAlt="Planta de arquitectura del departamento duplex 3A del proyecto Paroissien 4646"
+    figPosition="left-[18px] lg:left-[6px] 2xl:left-[23px]"
+  />
+  <ProjectUnitFloor
+    isUnidades={false}
+    unit="3B"
+    supCub="51,95"
+    supSemi="7,85"
+    supTotal="59,80"
+    planta={plantaDuplex3B}
+    plataMobile={plantaDuplex3B}
+    plantaAlt="Planta de arquitectura del departamento duplex 3B del proyecto Paroissien 4646"
+    figPosition="left-[-18px] lg:left-[-46px] 2xl:left-[-43px]"
+  />
+  <ProjectUnitFloor
+    isUnidades={false}
+    unit="3C"
+    supCub="52,15"
+    supSemi="3,80"
+    supTotal="55,95"
+    planta={plantaDuplex3C}
+    plataMobile={plantaDuplex3C}
+    plantaAlt="Planta de arquitectura del departamento duplex 3C del proyecto Paroissien 4646"
+    figPosition="left-[19px] lg:left-[30px] 2xl:left-[59px]"
+  />
+  <ProjectUnitFloor
+    isUnidades={false}
+    unit="3D"
+    supCub="51,95"
+    supSemi="3,80"
+    supTotal="55,75"
+    planta={plantaDuplex3D}
+    plataMobile={plantaDuplex3D}
+    plantaAlt="Planta de arquitectura del departamento duplex 3D del proyecto Paroissien 4646"
+    figPosition="left-[-19px] lg:left-[-30px] 2xl:left-[-19px]"
+  />
+</ProjectUnit>

@@ -1,0 +1,35 @@
+---
+import ProjectUnit from "./ProjectUnit.astro";
+import tresAmbientes from "../../assets/renders/tres_ambientes.jpg";
+import tresAmbientesBalcon from "../../assets/renders/tres_ambientes_balcon.jpg";
+import ProjectUnitFloor from "./ProjectUnitFloor.astro";
+import plantaTresAmb from "../../assets/plantas/tres_c.jpg";
+
+const image1 = {
+  image: tresAmbientes,
+  alt: "Imagen del interior del departamento tres ambientes del proyecto Paroissien 4646"
+}
+
+const image2 = {
+  image: tresAmbientesBalcon,
+  alt: "Imagen del interior del departamento tres ambientes del proyecto Paroissien 4646 visto desde el balcón"
+}
+---
+
+<ProjectUnit
+  id="tresambientes"
+  title="Tres Ambientes"
+  subtitle="Amplios, luminosos y con detalles de calidad en cada ambiente. Pensados para familias o parejas jóvenes, combinan diseño moderno, confort y funcionalidad. Cuentan con un gran balcón terraza, espacios bien distribuidos y excelente ventilación natural. Un hogar contemporáneo, cómodo y lleno de luz, donde cada detalle está pensado para disfrutar."
+  images={[image1, image2]}
+  imagePosition="object-[80%_0]"
+>
+  <ProjectUnitFloor
+    unit="1C/2C"
+    supCub="63,05"
+    supSemi="17,05"
+    supTotal="80,55"
+    planta={plantaTresAmb}
+    plataMobile={plantaTresAmb}
+    plantaAlt="Planta de arquitectura del departamento tres ambiente 1C y 2C del proyecto Paroissien 4646"
+  />
+</ProjectUnit>

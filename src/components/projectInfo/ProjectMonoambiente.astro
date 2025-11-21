@@ -1,0 +1,47 @@
+---
+import ProjectUnit from "./ProjectUnit.astro";
+import monoambiente from "../../assets/renders/monoambiente.jpg";
+import ProjectUnitFloor from "./ProjectUnitFloor.astro";
+import plantaMonoA from "../../assets/plantas/mono_a_hor.jpg";
+import plantaMonoAMobile from "../../assets/plantas/mono_a.jpg";
+import plantaMonoB from "../../assets/plantas/mono_b_hor.jpg";
+import plantaMonoBMobile from "../../assets/plantas/mono_b.jpg";
+
+
+const image = {
+  image: monoambiente,
+  alt: "Imagen del interior del departamento monoambiente del proyecto Paroissien 4646"
+}
+---
+
+<ProjectUnit
+  id="monoambientes"
+  title="Monoambientes"
+  subtitle="Cómodos monoambientes divisibles, que se destacan por su diseño funcional y contemporaneo ideales para quienes buscan practicidad sin resignar confort ni calidad. Cuentan con baño completo, amplio balcon terraza y una excelente iluminación natural en todos los espacios, favorecida por la ventilación cruzada que asegura frescura y bienestar."
+  images={[image]}
+  imagePosition="object-[80%_0]"
+>
+  <div class="grid gap-8 md:gap-0 md:grid-cols-2">
+    <ProjectUnitFloor
+      unit="1A/2A"
+      supCub="34,20"
+      supSemi="8,15"
+      supTotal="42,35"
+      planta={plantaMonoAMobile}
+      plataMobile={plantaMonoAMobile}
+      plantaAlt="Planta de arquitectura del departamento monoambiente 1A y 2A del proyecto Paroissien 4646"
+      variant="b"
+    />
+
+    <ProjectUnitFloor
+      unit="1B/2B"
+      supCub="34,20"
+      supSemi="8,15"
+      supTotal="42,35"
+      planta={plantaMonoBMobile}
+      plataMobile={plantaMonoBMobile}
+      plantaAlt="Planta de arquitectura del departamento monoambiente 1B y 2B del proyecto Paroissien 4646"
+      variant="c"
+    />
+  </div>
+</ProjectUnit>
