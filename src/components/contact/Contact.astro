@@ -1,38 +1,56 @@
 ---
 import Column from "../../layouts/Column.astro";
-import interiorImg from "../../assets/renders/interior.jpg";
-import Blur from "../global/Blur.astro";
-import Map from "./Map.astro";
-import {contactData} from "../../data/contactData.js"
-
-const {rawMovil, movil} = contactData.telefonos;
-const {direccion: email} = contactData.correo;
-const {url} = contactData.sitioWeb;
+import Loading from "../global/Loading.astro";
 ---
 
 <section class="" id="contacto">
-  <figure class="relative">
-    <Blur />
-    <img
-      class="min-h-[300px] object-center object-cover"
-      src={interiorImg.src}
-      alt="Imagen del interior del departamento duplex en doble altura del proyecto Paroissien 4646"
-    />
-  </figure>
   <!-- <div class="mt-4 mx-4 bg-stone-700"> -->
   <div class="bg-stone-700">
     <Column>
-      <div class="py-20 md:py-[150px] font-thin text-white text-4xl lg:text-6xl">
-        <h2 class="uppercase pb-10">Es tu momento de invertir.<br /> Contactate.</h2>
-        <div class="grid md:grid-cols-2 gap-4 items-center md:h-[250px]">
-          <address class="grid grid-cols-1 gap-4 lg:gap-6 not-italic font-thin text-3xl md:text-4xl lg:text-5xl">
-            <a class="hover:underline decoration-from-font" href=`mailto:${email}`>{email}</a>
-            <a class="font-poppins hover:underline decoration-from-font pb-2 lg:pb-4" href={`tel:+${rawMovil}`}>{movil}</a>
-            <h3 class="uppercase text-xl lg:text-2xl">Paroissien <span class="font-poppins">4646</span>, Saavedra, CABA.</h2>
-          </address>
-          <Map />
+      <div class="py-20 md:py-[150px] font-thin text-white text-4xl/12 md:text-6xl/17">
+        <div class="grid gap-2 items-center">
+            <h2 class="uppercase pb-10">Es tu momento de invertir.<br /> Contactate.</h2>
+            <form id="form" class="text-xl md:text-2xl grid md:grid-cols-2 gap-4">
+              <div class="grid gap-4">
+                <input class="input" type="text" id="fname" name="firstname" placeholder="Tu nombre" />
+                <input class="input" type="text" id="lname" name="lastname" placeholder="Tu apellido" />
+                <input class="input" type="email" id="eMail" name="eMail" placeholder="Tu eMail" />
+                <input class="input" type="text" id="subject" name="subject" placeholder="¿Que unidades te interesan?" />
+              </div>
+              <div class="flex flex-col gap-4">
+                <textarea class="input grow min-h-[180px] md:min-h-auto" id="message" name="message" placeholder="¿Cuál es tu consulta?"></textarea>
+                <div class="flex h-[50px]">
+                  <input type="submit" name="submit" value="ENVIAR" class="cursor-pointer p-2 size-full bg-white text-stone-700 font-black text-center hover:bg-stone-700 hover:text-white hover:border transition" />
+                  <Loading id={"loadingForm"} className="border border-white"/>
+                </div>
+              </div>
+            </form>
         </div>
       </div>
     </Column>
   </div>
 </section>
+
+<style>
+  @reference "../../styles/global.css";
+
+  #contacto .input {
+    @apply p-2 border w-full focus:bg-white focus:text-stone-700 focus-visible:outline-stone-700 focus-visible:outline-offset-[-3px] focus:rounded-none 
+  }
+</style>
+
+<script >
+  import { submit } from "../../helpers/form";
+
+  const form = document.getElementById('form');
+  const loadingForm = document.getElementById('loadingForm');
+  let isLoading = false;
+
+  // Inicializar estado
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (isLoading) return;
+    submit(e, loadingForm)
+  });
+</script>

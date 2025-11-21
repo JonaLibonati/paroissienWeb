@@ -1,20 +1,19 @@
 ---
-import croquis from '../assets/croquis.jpg';
+import Column from "../layouts/Column.astro";
+import FaceImage from "./global/faceImage.astro";
+
+const size = "h-[420px] md:h-[660px] lg:h-[740px]"
 ---
 
-<section id="hero" class="w-full px-2 md:px-10 pt-20 pb-20">
-  <h1 class="vhn">Paroissien 4646 | Desarrollo Inmobiliario</h1>
-  <div class="flex flex-wrap md:flex-nowrap justify-center gap-6 lg:gap-10 xl:gap-20">
-    <div class="">
-      <p class="block prs leading-none text-white font-black w-min text-[86px] lg:text-[126px] xl:text-[160px] 2xl:text-[200px]">
-        <span class="stone">P</span>A <span class="stone">R</span>OI <span class="stone">S</span>SIEN
-      </p>
-      <h2 class="font-thin uppercase text-[21px] lg:text-[29px] xl:text-4xl 2xl:text-5xl">Desarrollo inmobiliario</h2> 
-    </div>
-    <figure id="croquis" class="self-center relative">
-      <img class="relative top-[-10px] lg:top-[-34px] xl:top-[-24px] object-contain w-[300px] lg:w-[500px] xl:w-[600px] 2xl:w-[720px]" src={croquis.src} alt="Croquis del proyexcto inmobiliario Paroissien 4646" fetchpriority="high" />
-    </figure>
+<section id="hero" class=`relative ${size}`>
+  <div class="relative">
+    <Column>
+      <h1 class=`relative z-20 prs leading-none text-transparent font-black text-[34px] md:text-[64px] lg:text-[86px] uppercase pt-16`>Paroissien <span class="font-poppins">4646</span></h1>
+      <h2 class="font-thin uppercase text-[17px] md:text-[24px] lg:text-[29px] xl:text-[38px]">Desarrollo inmobiliario</h2>
+    </Column>
   </div>
+  
+  <FaceImage position="absolute" objectPosition="object-[50%_-40px] md:object-[50%_-100px] lg:object-[40%_-500px]" size={size} fetchpriority="high"/>
 </section>
 
 <style>
@@ -25,14 +24,15 @@ import croquis from '../assets/croquis.jpg';
     /* Sets the stroke color */
   }
 
+  @media only screen and (max-width: 768px) {
+    #hero .prs {
+      -webkit-text-stroke-width: 1.5px;
+      /* Sets the stroke width */
+    }
+  }
+
   #hero .prs .stone {
     /* Sets the stroke color */
     color: var(--color-stone-200);
-  }
-
-  @media only screen and (max-width:617px) {
-    figure#croquis img {
-      top: 0;
-    }
   }
 </style>

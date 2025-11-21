@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.psintiendoelmundo.com/sitemap.xml
+Sitemap: https://www.paroissien4646.com/sitemap.xml

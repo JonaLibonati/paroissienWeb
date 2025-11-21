@@ -1,9 +1,9 @@
 ---
-import footerLogo from "../../../assets/footer_logo.png";
 import Column from "../../../layouts/Column.astro";
 import {contactData} from "../../../data/contactData.js";
 import LegalItem from "./LegalItem.astro";
 import Author from "./Author.astro";
+import WhatsappIcon from "../icons/WhatsappIcon.astro";
 
 const {rawMovil, movil} = contactData.telefonos;
 const {direccion: email} = contactData.correo;
@@ -17,20 +17,17 @@ const {url} = contactData.sitioWeb;
       <LegalItem text="El mobiliario exhibido es ilustrativo y no se encuentra incluido en la oferta que se realiza del producto inmobiliario." />
       <LegalItem text="La distribución de los espacios y/o dimensiones, así como los detalles de terminación, aberturas y fachadas podrán variar de acuerdo con necesidades de orden técnico que se presenten durante la construcción o aprobación de las distintas etapas que conforman el emprendimiento y/o disponibilidad de materiales e insumos en el mercado local." />
     </ul>
-    <div class="grid md:grid-cols-[200px_1fr] gap-8 pb-10 mb-5 border-b border-stone-300">
-      <figure>
-        <img
-          class="w-[200px] object-contain"
-          src={footerLogo.src}
-          alt="Logo del nombre del proyecto inmobiliario Paroissien 4646"
-        />
-      </figure>
+    <div class="grid md:grid-cols-[300px_1fr] gap-8 pb-10 mb-5 border-b border-stone-300">
       <div>
-        <address class="grid grid-cols-1 gap-3 not-italic font-thin text-xl md:text-2xl">
+        <h1 class=`relative z-20 prs leading-none text-transparent font-black text-[34px] uppercase`>Paroissien <span class="font-poppins">4646</span></h1>
+        <h2 class="font-thin uppercase text-[17px]">Desarrollo inmobiliario</h2>
+      </div>
+      <div>
+        <address class="grid grid-cols-1 gap-2 not-italic font-thin text-xl">
           <h2 class="uppercase">Paroissien <span class="font-poppins">4646</span>, Saavedra, CABA.</h2>
           <h3 class="uppercase">Tu inversión. Tu futuro.</h3>
           <a class="hover:underline decoration-from-font" href=`mailto:${email}`>{email}</a>
-          <a class="font-poppins hover:underline decoration-from-font" href={`tel:+${rawMovil}`}>{movil}</a>
+          <a class="font-poppins hover:underline decoration-from-font flex gap-2 items-center" href={`https://api.whatsapp.com/send?phone=${rawMovil}&text=Hola!%20Necesito%20asesoramiento%20sobre%20Paroissien%204646.`}>{movil}<WhatsappIcon className="text-stone-700 size-6"/></a>
           <a href={`https://${url}`}>www.paroissien<span class="font-poppins">4646</span>.com</a>
         </address>
       </div>
@@ -38,3 +35,12 @@ const {url} = contactData.sitioWeb;
     <Author />
   </Column>
 </footer>
+
+<style>
+  footer .prs {
+    -webkit-text-stroke-width: 1.5px;
+    /* Sets the stroke width */
+    -webkit-text-stroke-color: var(--color-stone-700);
+    /* Sets the stroke color */
+  }
+</style>

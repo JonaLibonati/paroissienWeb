@@ -1,49 +1,16 @@
 ---
-import Column from "../../layouts/Column.astro";
-import fachada from "../../assets/renders/fachada.jpg";
-import Blur from "../global/Blur.astro";
-import ProjectInfoItem from "./ProjectInfoItem.astro";
-import ProgressBar from "./ProgressBar.astro";
-import Brochure from "./Brochure.astro";
+import ProjectDuplex from "./ProjectDuplex.astro";
+import ProjectInfoGeneral from "./projectInfoGeneral.astro";
+import ProjectLocation from "./ProjectLocation.astro";
+import ProjectMonoambiente from "./ProjectMonoambiente.astro";
+import ProjectTresAmbientes from "./ProjectTresAmbientes.astro";
+
 ---
 
-<section id="info-proyecto" class="pt-20">
-  <Column>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-around">
-      <figure class="relative">
-        <Blur />
-        <img
-          class="min-h-[440px] md:min-h-[500px] lg:min-h-[700px] object-cover object-center md:object-[45%_50%] lg:object-center"
-          src={fachada.src}
-          alt="Render de la fachada del edificio Paroissien"
-        />
-      </figure>
-      <div class="flex flex-col">
-        <h2 class="vhn">Informacion general del proyecto</h2>
-        <h3 class="text-2xl lg:text-3xl xl:text-4xl font-thin uppercase">
-          Minimalismo, equilibrio y detalles que acompañan el ritmo de Saavedra.
-        </h3>
-        <div class="grow flex content-center">
-          <div class="grid grid-cols-[1fr_116px] lg:grid-cols-2 justify-items-center w-full pt-8 lg:pt-12 min-h-[370px] md:min-h-auto">
-            <ul class="justify-self-start xl:justify-self-center grid grid-cols-1 md:gap-2 lg:gap-4 w-fit">
-              <!-- 
-              <ProjectInfoItem value="400">
-                <Fragment slot="text">
-                  m<sup>2</sup> a construir
-                </Fragment>
-              </ProjectInfoItem> 
-              -->
-              <ProjectInfoItem value="10" text="unidades funcionales" />
-              <ProjectInfoItem value="4" text="mono ambientes" />
-              <ProjectInfoItem value="2" text="tres ambientes" />
-              <ProjectInfoItem value="4" text="duplex doble altura" />
-              <ProjectInfoItem value="8" text="espacios guardacoches" />
-            </ul>
-            <ProgressBar percentage={0.05} />
-          </div>
-        </div>
-      </div>
-    </div>
-    <Brochure />
-  </Column>
+<section id="info-proyecto" class="py-20">
+  <ProjectInfoGeneral />
+  <ProjectMonoambiente />
+  <ProjectTresAmbientes />
+  <ProjectDuplex />
+  <ProjectLocation />
 </section>

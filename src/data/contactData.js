@@ -8,7 +8,7 @@ export const contactData = {
   },
   correo: {
     label: "Correo electrónico",
-    direccion: "info@axiabaires.com",
+    direccion: "comercial@axiabaires.com",
   },
   sitioWeb: {
     label: "Sitio Web",

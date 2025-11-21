@@ -2,59 +2,55 @@
 const { percentage } = Astro.props;
 ---
 
-<div aria-label="Barra de progreso del desarrollo inmobiliario Paroissien 4646">
+<astro-map data-percentage={percentage}>
   <div
-    id="wrapper"
-    class=`relative border-1 border-stone-700 bg-stone-600 w-[116px] lg:w-[150px] `
+    aria-label="Barra de progreso del desarrollo inmobiliario Paroissien 4646"
   >
     <div
-      id="bar"
-      class=`relative bg-white w-full bottom-0`
+      id="wrapper"
+      class=`relative border-1 border-stone-700 bg-stone-600 w-[116px] lg:w-[150px] `
     >
-    <p class="relative text-white text-xl lg:text-2xl font-thin p-3 lg:p-4 mix-blend-difference">
-      <span class="font-poppins text-3xl lg:text-4xl">{percentage * 100}%</span
-      >
-      de avance
-    </p>
+      <div id="bar" class=`relative bg-white w-full bottom-0`>
+        <p
+          class="relative text-white text-xl lg:text-2xl font-thin p-3 lg:p-4 mix-blend-difference"
+        >
+          <span class="font-poppins text-3xl lg:text-4xl"
+            >{percentage * 100}%</span
+          >
+          de avance
+        </p>
+      </div>
+    </div>
   </div>
-</div>
+</astro-map>
 
-<script define:vars={{ percentage }}>
+  <script>
+    import { isLarge, isMedium } from "../../helpers/viewports";
 
-  const wrapper = document.getElementById("wrapper");
-  const bar = document.getElementById("bar");
+    class Map extends HTMLElement {
+      connectedCallback() {
 
-  const limitLarge = 1024;
-  const limitMedium = 768;
+        const percentage = this.dataset.percentage
+        const wrapper = document.getElementById("wrapper");
+        const bar = document.getElementById("bar");
 
-  const isLarge = () => {
-    if (window.innerWidth >= limitLarge) {
-      return true
+        const getHeight = () => {
+          if (isMedium(window)) return 329;
+          if (isLarge(window)) return 505;
+          return 320;
+        };
+
+        const setBarHeight = () => {
+          const height = getHeight();
+          wrapper.style.height = height + "px";
+          bar.style.height = Math.round(height * (1 - percentage)) + "px";
+        };
+
+        window.addEventListener("resize", setBarHeight);
+        setBarHeight();
+      }
     }
-    return false
-  }
-
-  const isMedium = () => {
-    if (window.innerWidth >= limitMedium  && window.innerWidth < limitLarge) {
-      return true
-    }
-    return false
-  }
-
-  const getHeight = () => {
-    if (isMedium()) return 329
-    if (isLarge()) return 505
-    return 320
-  }
-
-  const setBarHeight = () => {
-    const height = getHeight();
-    wrapper.style.height = height + 'px';
-    console.log(percentage)
-    bar.style.height = Math.round(height * (1 - percentage)) + 'px';
-  }
-
-  window.addEventListener('resize', setBarHeight);
-  setBarHeight();
-
-</script>
+    
+    customElements.define('astro-map', Map);
+    </script>
+</astro-map>
